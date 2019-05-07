@@ -45,3 +45,13 @@ mainDiv.appendChild(div3);
 div3.appendChild(div3Header);
 div3.appendChild(div3InnerOne);
 div3.appendChild(div3Comments);
+
+function liTag(className, innerHTML, idName){
+    var li = document.createElement('li');
+    li.id = idName;
+    li.className = className;
+    li.innerHTML = innerHTML;
+}
+
+var li1 = liTag("hot", "pine nuts", "two");
+var li2 = liTag("hot", "figs", "three");
