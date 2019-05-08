@@ -5,6 +5,7 @@ var header = document.createElement('h1');
 header.textContent = 'HighOnCoding';
 
 mainDiv.appendChild(header); 
+header.setAttribute('class', 'navbar-brand bg-primary text-light')
 
 //Creating first content box "Curse of the Current Reviews"
 var div1 = document.createElement('div'); 
@@ -16,6 +17,7 @@ divInnerOne.textContent = "content content content";
 mainDiv.appendChild(div1);
 div1.appendChild(div1Header);
 div1.appendChild(divInnerOne);
+div1.setAttribute('class', 'bg-primary text-light')
 
 //Creating second content box "Hello WatchKit"
 var div2 = document.createElement('div');
@@ -46,12 +48,13 @@ div3.appendChild(div3Header);
 div3.appendChild(div3InnerOne);
 div3.appendChild(div3Comments);
 
-function liTag(className, innerHTML, idName){
-    var li = document.createElement('li');
-    li.id = idName;
-    li.className = className;
-    li.innerHTML = innerHTML;
-}
+// function liTag(className, innerHTML, idName){
+//     var li = document.createElement('li');
+//     li.id = idName;
+//     li.className = className;
+//     li.innerHTML = innerHTML;
+// }
 
-var li1 = liTag("hot", "pine nuts", "two");
-var li2 = liTag("hot", "figs", "three");
+// var li1 = liTag("hot", "pine nuts", "two");
+// var li2 = liTag("hot", "figs", "three");
+
