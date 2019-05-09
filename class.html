@@ -5,30 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+    
+        body{
+            height: 200px;
+            background: beige;
+        }
+        .dot{
+            height: 8px;
+            width: 8px;
+            border-radius: 4px;
+            background-color: blue;
+            position: absolute;
+        }
+    
+    </style>
 </head>
 <body>
-    <div>
-        <ul>
-            <li>
-                aksdja
-            </li>
-        </ul>
-    </div>
-    
+    <!-- <button>A</button>
+    <button>B</button>
+    <button>C</button> -->
+
 
     <script>
-        var main = document.getElementById('main');    
-        var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
-        var newDayList = days.map(function(day){
-            return "<li>" + day + "</li>"
+
+        window.addEventListener('click', function(event){
+            let dot = document.createElement('div');
+            dot.className = 'dot';
+            console.log(event);
+            dot.style.left = (event.pageX -4) + "px";
+            dot.style.top = (event.pageY -4) + "px";
+            document.body.appendChild(dot);
         })
 
-        console.log(newDayList);
-        var el = document.getElementById('ul');
-        el.appendChild(newDayList);
-        
 
+        // document.body.addEventListener('click', function(e){
+        //     if(event.target.nodeName == "BUTTON"){
+        //         console.log("Clicked " + event.target.textContent)
+        //     }
+        // })
+
+        // window.addEventListener('keydown', function(e){
+        //     console.log(e)
+        //     if(e.target.key == "v"){
+        //         document.body.style.backgroundColor = "purple";
+        //     }
+        // })
+
+        // window.addEventListener('keyup', function(e){
+        //     if(event.key == 'v'){
+        //         document.body.style.backgroundColor = "";
+        //     }
+        // })
+
+
+
+        // window.addEventListener('click', function(e){
+        //     document.getElementById('result').textContent = "You knocked."
+        // })
+    
     </script>
+
 </body>
 </html>
