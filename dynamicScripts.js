@@ -35,7 +35,7 @@ div2.appendChild(div2InnerOne);
 div2.appendChild(div2Comments);
 div2.setAttribute('class', 'm-5');
 div2Header.setAttribute('class', 'text-primary')
-div2Comments.setAttribute('class', 'p-1 bg-warning text-light text-emphasis')
+div2Comments.setAttribute('class', 'p-1 bg-warning text-light')
 
 
 //Creating third content box "Introduction to Swift"
