@@ -2,6 +2,9 @@ var playerArray = [];
 var dealerArray = [];
 const deck = [];
 var shuffledDeck = [];
+var dealButton = document.querySelector('#deal-button');
+document.getElementById('hit-button').disabled = true;
+document.getElementById('stand-button').disabled = true;
 
 var aceOfHearts = {
     value: 11,
@@ -267,3 +270,129 @@ var twoOfSpades = {
     suit: 'spades',
     img: 'Javascript/BlackJack/JPEG/2S.jpg'
 }
+
+deck.push(twoOfSpades, twoOfDiamonds, twoOfHearts, twoOfClubs);
+deck,push(threeOfClubs, threeOfHearts, threeOfSpades, threeofDiamonds);
+deck.push(fourOfClubs, fourOfDiamonds, fourOfHearts, fourOfspades);
+deck.push(fiveOfCLubs, fiveOfDiamonds, fiveOfHearts, fiveOfSpades);
+deck.push(sixOfClubs, sixOfDiamonds, sixOfHearts, sixOfSpades);
+deck.push(sevenOfClubs, sevenOfDiamonds, sevenOfHearts, sevenOfSpades);
+deck.push(eightOfClubs, eightOfDiamonds, eightOfHearts, eightOfSpades);
+deck.push(nineOfClubs, nineOfDiamonds, nineOfHearts, nineOfSpades);
+deck.push(tenOfClubs, tenOfDiamonds, tenOfHearts, tenOfSpades);
+deck.push(jackOfClubs, jackOfDiamonds, jackOfHearts, jackOfSpades);
+deck.push(queenOfClubs, queenOfDiamonds, queenOfHearts, queenOfSpades);
+deck.push(kingOfClubs, kingOfDiamonds, kingOfHearts, kingOfSpades);
+deck.push(aceOfClubs, aceOfDiamonds, aceOfHearts, aceOfSpades);
+
+
+function shuffleArray(array) {
+    for(var i = array.length - 1; i > 0; i--){
+        var j = Math.floor(math.random() * (i+1));
+        var temp = array[i];
+        array[i] = array[j]
+        array[j] = temp;
+    }
+    return array
+}
+shuffleArray(deck);
+
+function calcPoints(array){
+    var sum = 0;
+    var aceCount = 0;
+    var other = 0;
+    for(var i = 0; i < array.length; i++) {
+        sum += array[i].point
+        if(array[i] == aceOfClubs || array[i] == aceOfDiamonds || array[i] == aceOfHearts || array[i] == aceOfSpades) {
+            aceCount += 1;
+        } else {
+            other += 1;
+        }
+        if (sum > 21){
+            if(array.includes(aceOfClubs) || array.includes(aceOfDiamonds) || array.includes(aceOfHearts) || array.includes(aceOfSpades)){
+                sum = sum - (aceCount*10)
+                aceCount = 0
+            }
+        }
+    }
+    return sum
+}
+
+function bust() {
+    var bust = document.createElement('div');
+    bust.setAttribute('class', 'pop-up')
+    bust.textContent = "You busted"
+    screen.appendChild(bust)
+    bust.appendChild(replayButton)
+    document.getElementById('hit-button').disabled = true;
+    document.getElementById('stand-button').disabled = true;
+
+}
+
+function lose(){
+    var lose = document.createElement('div');
+    lose.setAttribute('class', 'pop-up')
+    lose.textContent = "You lose!"
+    screen.appendChild(lose)
+    lose.appendChild(replayButton)
+
+}
+
+function win(){
+    var win = document.createElement('div');
+    win.setAttribute('class', 'pop-up')
+    win.textContent = "You win!"
+    screen.appendChild(win);
+    win.appendChild(replayButton)
+}
+
+function tie(){
+    var tie = document.createElement('div');
+    tie.setAttribute('class', 'pop-up')
+    tie.textContent = "You tied!"
+    screen.appendChild(tie)
+    tie.appendChild(replayButton)
+}
+
+
+dealButton.addEventListener('click', function(){
+    document.getElementById('deal-button').disabled = true;
+    document.getElementById('hit-button').disabled = true;
+    document.getElementById('stand-button').disabled = true;
+    for(var i = 0; i < 2; i++){
+        dealerArray.push(deal())
+        var pic = document.createElement('pic');
+        pic.src = dealerArray[dealerArray.length-1].img;
+        pic.setAttribute('class', 'height100 cardIMG')
+        dealerHand.appendChild(img);
+    }
+
+    dealerPoint.textContent = calcPoints(dealerArray).toString()
+
+    for (var i = 0; i < 2; i++) {
+        playerArray.push(deal())
+        var pic = document.createElement('pic');
+        pic.src = playerArray[playerArray.length-1].img;
+        pic.setAttribute('class', 'height100 cardIMG')
+        playerHand.appendChild(img);
+    }
+    playerPoint.textContent = calcPoints(playerArray).toString()
+
+})
+
+var hitButton = document.querySelector('#hit-button');
+
+hitButton.addEventListener('click', function(){
+    playerArray.push(deal())
+    var pic = document.createElement('pic');
+    pic.src = playerArray[playerArray.length-1].pic;
+    pic.setAttribute('class', 'height100 cardIMG')
+    playerHand.appendChild(pic);
+    playerPoint.textContent = calcPoints(playerArray).toString()
+    if (calcPoints(playerArray) > 21) {
+        bustFunc()
+        lossCount.textContent = losses.toString()
+    }
+})
+
+var standButton = document.querySelector('#stand-button')
