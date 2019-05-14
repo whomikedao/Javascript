@@ -16,6 +16,26 @@ body {
     margin: auto;
     height: 400px;
     width: 700px;
-    background-color: #53AE8D;
+    background-color: green;
     border-radius: 30px;
+}
+
+#player-hand {
+    width: 600px;
+    height: 100px;
+    background-color: white;
+    margin: auto;
+}
+
+#dealer-hand {
+    width: 600px;
+    height: 100px;
+    background-color: white;
+    margin: auto;
+}
+
+.pop-up {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
 }
