@@ -7,6 +7,15 @@ var dealerPoint = document.getElementById('dealer-points');
 var playerPoint = document.getElementById('player-points');
 document.getElementById('hit-button').disabled = true;
 document.getElementById('stand-button').disabled = true;
+var table = document.getElementById('table');
+var replayButton = document.createElement('button');
+replayButton.setAttribute('id', 'replay-button');
+replayButton.textContent = "Replay";
+var dealerHand = document.getElementById('dealer-hand');
+var playerHand = document.getElementById('player-hand');
+var drawCount = document.getElementById('draw-count');
+var lossCount = document.getElementById('loss-count');
+var winCount = document.getElementById('win-count');
 var wins = 0;
 var losses = 0;
 var draws = 0;
@@ -16,270 +25,270 @@ var draws = 0;
 var aceOfHearts = {
     value: 11,
     suit: 'hearts',
-    img: 'Javascript/BlackJack/JPEG/AH.jpg'
+    img: 'JPEG/AH.jpg'
 }
 var aceOfSpades = {
     value: 11,
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/AS.jpg'
+    img: 'JPEG/AS.jpg'
 }
 
 var aceOfDiamonds = {
     value: 11,
     suit: 'diamonds',
-    img: 'Javascript/BlackJack/JPEG/AD.jpg'
+    img: 'JPEG/AD.jpg'
 }
 
 var aceOfClubs = {
     value: 11,
     suit: 'clubs',
-    img: 'Javascript/BlackJack/JPEG/AC.jpg'
+    img: 'JPEG/AC.jpg'
 }
 
 var kingOfHearts = {
     value: 10,
     suit: 'hearts',
-    img: 'Javascript/BlackJack/JPEG/KH.jpg'
+    img: 'JPEG/KH.jpg'
 }
 
 var kingOfSpades = {
     value: 10,
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/KS.jpg'
+    img: 'JPEG/KS.jpg'
 }
 var kingOfDiamonds = {
     value: 10,
     suit: 'diamonds',
-    img: 'Javascript/BlackJack/JPEG/KD.jpg'
+    img: 'JPEG/KD.jpg'
 }
 var kingOfClubs = {
     value: 10,
     suit: 'clubs',
-    img: 'Javascript/BlackJack/JPEG/KC.jpg'
+    img: 'JPEG/KC.jpg'
 }
 var queenOfClubs = {
     value: 10,
     suit: 'clubs',
-    img: 'Javascript/BlackJack/JPEG/QC.jpg'
+    img: 'JPEG/QC.jpg'
 }
 var queenOfDiamonds = {
     value: 10,
     suit: 'diamonds',
-    img: 'Javascript/BlackJack/JPEG/QD.jpg'
+    img: 'JPEG/QD.jpg'
 }
 var queenOfHearts = {
     value: 10,
     suit: 'hearts',
-    img: 'Javascript/BlackJack/JPEG/QH.jpg'
+    img: 'JPEG/QH.jpg'
 }
 var queenOfSpades = {
     value: 10,
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/QS.jpg'
+    img: 'JPEG/QS.jpg'
 }
 var jackOfClubs = {
     value: 10,
     suit: 'clubs',
-    img: 'Javascript/BlackJack/JPEG/JC.jpg'
+    img: 'JPEG/JC.jpg'
 }
 var jackOfDiamonds = {
     value: 10,
     suit: 'diamonds',
-    img: 'Javascript/BlackJack/JPEG/JD.jpg'
+    img: 'JPEG/JD.jpg'
 }
 var jackOfHearts = {
     value: 10,
     suit: 'hearts',
-    img: 'Javascript/BlackJack/JPEG/JH.jpg'
+    img: 'JPEG/JH.jpg'
 }
 var jackOfSpades = {
     value: 10,
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/JS.jpg'
+    img: 'JPEG/JS.jpg'
 }
 var tenOfClubs = {
     value: 10,
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/10C.jpg'
+    img: 'JPEG/10C.jpg'
 }
 var tenOfDiamonds = {
     value: 10,
     suit: 'diamonds',
-    img: 'Javascript/BlackJack/JPEG/10D.jpg'
+    img: 'JPEG/10D.jpg'
 }
 var tenOfHearts = {
     value: 10,
     suit: 'hearts',
-    img: 'Javascript/BlackJack/JPEG/10H.jpg'
+    img: 'JPEG/10H.jpg'
 }
 var tenOfSpades = {
     value: 10,
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/10S.jpg'
+    img: 'JPEG/10S.jpg'
 }
 var nineOfClubs = {
     value: 9,
     suit: 'clubs',
-    img: 'Javascript/BlackJack/JPEG/9C.jpg'
+    img: 'JPEG/9C.jpg'
 }
 var nineOfDiamonds = {
     value: 9,
     suit: 'diamonds',
-    img: 'Javascript/BlackJack/JPEG/9D.jpg'
+    img: 'JPEG/9D.jpg'
 }
 var nineOfHearts = {
     value: 9,
     suit: 'hearts',
-    img: 'Javascript/BlackJack/JPEG/9H.jpg'
+    img: 'JPEG/9H.jpg'
 }
 var nineOfSpades = {
     value: 9,
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/9S.jpg'
+    img: 'JPEG/9S.jpg'
 }
 var eightOfClubs = {
     value: 8,
     suit: 'clubs',
-    img: 'Javascript/BlackJack/JPEG/8C.jpg'
+    img: 'JPEG/8C.jpg'
 }
 var eightOfDiamonds = {
     value: 8,
     suit: 'diamonds',
-    img: 'Javascript/BlackJack/JPEG/8D.jpg'
+    img: 'JPEG/8D.jpg'
 }
 var eightOfHearts = {
     value: 8,
     suit: 'hearts',
-    img: 'Javascript/BlackJack/JPEG/8H.jpg'
+    img: 'JPEG/8H.jpg'
 }
 var eightOfSpades = {
     value: 8,
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/8S.jpg'
+    img: 'JPEG/8S.jpg'
 }
 var sevenOfClubs = {
     value: 7,
     suit: 'clubs',
-    img: 'Javascript/BlackJack/JPEG/7C.jpg'
+    img: 'JPEG/7C.jpg'
 }
 var sevenOfDiamonds = {
     value: 7,
     suit: 'diamonds',
-    img: 'Javascript/BlackJack/JPEG/7D.jpg'
+    img: 'JPEG/7D.jpg'
 }
 var sevenOfHearts = {
     value: 7,
     suit: 'hearts',
-    img: 'Javascript/BlackJack/JPEG/7H.jpg'
+    img: 'JPEG/7H.jpg'
 }
 var sevenOfSpades = {
     value: 7,
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/7S.jpg'
+    img: 'JPEG/7S.jpg'
 }
 var sixOfClubs = {
     value: 6,
     suit: 'clubs',
-    img: 'Javascript/BlackJack/JPEG/6C.jpg'
+    img: 'JPEG/6C.jpg'
 }
 var sixOfDiamonds = {
     value: 6,
     suit: 'diamonds',
-    img: 'Javascript/BlackJack/JPEG/6D.jpg'
+    img: 'JPEG/6D.jpg'
 }
 var sixOfHearts = {
     value: 6,
     suit: 'hearts',
-    img: 'Javascript/BlackJack/JPEG/6H.jpg'
+    img: 'JPEG/6H.jpg'
 }
 var sixOfSpades = {
     value: 6,
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/6S.jpg'
+    img: 'JPEG/6S.jpg'
 }
 var fiveOfCLubs = {
     value: 5,
     suit: 'clubs',
-    img: 'Javascript/BlackJack/JPEG/5C.jpg'
+    img: 'JPEG/5C.jpg'
 }
 var fiveOfDiamonds = {
     value: 5,
     suit: 'diamonds',
-    img: 'Javascript/BlackJack/JPEG/5D.jpg'
+    img: 'JPEG/5D.jpg'
 }
 var fiveOfHearts = {
     value: 5,
     suit: 'hearts',
-    img: 'Javascript/BlackJack/JPEG/5H.jpg'
+    img: 'JPEG/5H.jpg'
 }
 var fiveOfSpades = {
     value: 5, 
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/5S.jpg'
+    img: 'JPEG/5S.jpg'
 }
 var fourOfClubs = {
     value: 4,
     suit: 'clubs',
-    img: 'Javascript/BlackJack/JPEG/4C.jpg'
+    img: 'JPEG/4C.jpg'
 }
 var fourOfDiamonds = {
     value: 4,
     suit: 'diamonds',
-    img: 'Javascript/BlackJack/JPEG/4D.jpg'
+    img: 'JPEG/4D.jpg'
 }
 var fourOfHearts = {
     value: 4,
     suit: 'hearts',
-    img: 'Javascript/BlackJack/JPEG/4H.jpg'
+    img: 'JPEG/4H.jpg'
 }
 var fourOfspades = {
     value: 4,
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/4S.jpg'
+    img: 'JPEG/4S.jpg'
 }
 var threeOfClubs = {
     value: 4,
     suit: 'clubs',
-    img: 'Javascript/BlackJack/JPEG/3C.jpg'
+    img: 'JPEG/3C.jpg'
 }
-var threeofDiamonds = {
+var threeOfDiamonds = {
     value: 3,
     suit: 'diamonds',
-    img: 'Javascript/BlackJack/JPEG/3D.jpg'
+    img: 'JPEG/3D.jpg'
 }
 var threeOfHearts = {
     value: 3,
     suit: 'hearts',
-    img: 'Javascript/BlackJack/JPEG/3H.jpg'
+    img: 'JPEG/3H.jpg'
 }
 var threeOfSpades = {
     value: 3,
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/3S.jpg'
+    img: 'JPEG/3S.jpg'
 }
 var twoOfClubs = {
     value: 2,
     suit: 'clubs',
-    img: 'Javascript/BlackJack/JPEG/2C.jpg'
+    img: 'JPEG/2C.jpg'
 }
 var twoOfDiamonds = {
     value: 2,
     suit: 'diamonds',
-    img: 'Javascript/BlackJack/JPEG/2D.jpg'
+    img: 'JPEG/2D.jpg'
 }
 var twoOfHearts = {
     value: 2,
     suit: 'hearts',
-    img: 'Javascript/BlackJack/JPEG/2H.jpg'
+    img: 'JPEG/2H.jpg'
 }
 var twoOfSpades = {
     value: 2,
     suit: 'spades',
-    img: 'Javascript/BlackJack/JPEG/2S.jpg'
+    img: 'JPEG/2S.jpg'
 }
 
 deck.push(twoOfSpades, twoOfDiamonds, twoOfHearts, twoOfClubs);
-deck,push(threeOfClubs, threeOfHearts, threeOfSpades, threeofDiamonds);
+deck.push(threeOfClubs, threeOfHearts, threeOfSpades, threeOfDiamonds);
 deck.push(fourOfClubs, fourOfDiamonds, fourOfHearts, fourOfspades);
 deck.push(fiveOfCLubs, fiveOfDiamonds, fiveOfHearts, fiveOfSpades);
 deck.push(sixOfClubs, sixOfDiamonds, sixOfHearts, sixOfSpades);
@@ -295,7 +304,7 @@ deck.push(aceOfClubs, aceOfDiamonds, aceOfHearts, aceOfSpades);
 //SHUFFLE DECK
 function shuffleArray(array) {
     for(var i = array.length - 1; i > 0; i--){ //GOES THROUGH DECK
-        var j = Math.floor(math.random() * (i+1)); //RANDOM RETURNS FLOAT, FLOOR PUTS BACK ON INT
+        var j = Math.floor(Math.random() * (i+1)); //RANDOM RETURNS FLOAT, FLOOR PUTS BACK ON INT
         var temp = array[i]; //CREATING TEMPORARY ARRAY OF CARDS
         array[i] = array[j]
         array[j] = temp;
@@ -326,9 +335,9 @@ function calcPoints(array){
     return sum
 }
 
-
+//DEAL BUTTON
 function deal(){
-    return deck.pop();
+    return deck.pop();//REMOVES CARD FROM "TOP" OF DECK AND RETURNS IT
 }
 //BUST
 function bust() {
@@ -376,14 +385,14 @@ function tie(){
 //CLICKING ON DEAL
 dealButton.addEventListener('click', function(){
     document.getElementById('deal-button').disabled = true;
-    document.getElementById('hit-button').disabled = false; 
+    document.getElementById('hit-button').disabled = false; //BUTTONS BECOME AVAILABLE AFTER USER DEALS
     document.getElementById('stand-button').disabled = false;
     for(var i = 0; i < 2; i++){
-        dealerArray.push(deal())
-        var pic = document.createElement('img');
-        pic.src = dealerArray[dealerArray.length-1].img;
-        pic.setAttribute('class', 'height100 cardIMG')
-        dealerHand.appendChild(pic);
+        dealerArray.push(deal()) //ADDS CARD TO DEALER ARRAY
+        var pic = document.createElement('img'); //CREATES ELEMENT OF IMG TO VARIABLE PIC
+        pic.src = dealerArray[dealerArray.length-1].img; //ASSIGNED THE INDEX OF DEALER ARRAY IMG TO PIC.SRC
+        pic.setAttribute('class', 'height50 cardIMG'); //SET ATTRIBUTE CLASS
+        dealerHand.appendChild(pic); //APPENDS 
     }
 
     dealerPoint.textContent = calcPoints(dealerArray).toString()
@@ -392,8 +401,8 @@ dealButton.addEventListener('click', function(){
         playerArray.push(deal())
         var pic = document.createElement('img');
         pic.src = playerArray[playerArray.length-1].img;
-        pic.setAttribute('class', 'height100 cardIMG')
-        playerHand.appendChild(img);
+        pic.setAttribute('class', 'height50 cardIMG');
+        playerHand.appendChild(pic);
     }
     playerPoint.textContent = calcPoints(playerArray).toString()
 
@@ -404,8 +413,8 @@ var hitButton = document.querySelector('#hit-button');
 hitButton.addEventListener('click', function(){
     playerArray.push(deal())
     var pic = document.createElement('img');
-    pic.src = playerArray[playerArray.length-1].pic;
-    pic.setAttribute('class', 'height100 cardIMG')
+    pic.src = playerArray[playerArray.length-1].img;
+    pic.setAttribute('class', 'height50 cardIMG');
     playerHand.appendChild(pic);
     playerPoint.textContent = calcPoints(playerArray).toString()
     if (calcPoints(playerArray) > 21) {
@@ -423,7 +432,7 @@ standButton.addEventListener('click', function(){
         dealerArray.push(deal())
         var pic = document.createElement('img');
         pic.src = dealerArray[dealerArray.length-1].img 
-        pic.setAttribute('class', 'height100 cardIMG')
+        pic.setAttribute('class', 'height75 cardIMG')
         dealerHand.appendChild(pic);
         dealerPoint.textContent = calcPoints(dealerArray).toString()
     }
