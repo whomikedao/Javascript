@@ -319,7 +319,7 @@ function calcPoints(array){
     var aceCount = 0;
     var other = 0;
     for(var i = 0; i < array.length; i++) {
-        sum += array[i]
+        sum += array[i].value
         if(array[i] == aceOfClubs || array[i] == aceOfDiamonds || array[i] == aceOfHearts || array[i] == aceOfSpades) {
             aceCount += 1;
         } else {
@@ -355,10 +355,10 @@ function bust() {
 //LOSE
 function lose(){
     var lose = document.createElement('div');
-    lose.setAttribute('class', 'pop-up')
-    lose.textContent = "You lose!"
-    messages.appendChild(lose)
-    lose.appendChild(replayButton)
+    lose.setAttribute('class', 'pop-up');
+    lose.textContent = "You lose!";
+    messages.appendChild(lose);
+    lose.appendChild(replayButton);
     losses += 1;
 
 }
@@ -366,20 +366,24 @@ function lose(){
 //WIN
 function win(){
     var win = document.createElement('div');
-    win.setAttribute('class', 'pop-up')
-    win.textContent = "You win!"
+    win.setAttribute('class', 'pop-up');
+    win.textContent = "You win!";
     messages.appendChild(win);
-    win.appendChild(replayButton)
+    win.appendChild(replayButton);
     wins += 1;
 }
 //TIE
 function tie(){
     var tie = document.createElement('div');
-    tie.setAttribute('class', 'pop-up')
-    tie.textContent = "You tied!"
-    messages.appendChild(tie)
-    tie.appendChild(replayButton)
+    tie.setAttribute('class', 'pop-up');
+    tie.textContent = "You tied!";
+    messages.appendChild(tie);
+    tie.appendChild(replayButton);
     draws += 1;
+}
+//EMPTY HAND
+function empty(array){
+    array.length = 0;
 }
 
 //CLICKING ON DEAL
@@ -418,9 +422,10 @@ hitButton.addEventListener('click', function(){
     playerHand.appendChild(pic);
     playerPoint.textContent = calcPoints(playerArray).toString()
     if (calcPoints(playerArray) > 21) {
-        bustFunc()
+        bust()
         lossCount.textContent = losses.toString()
     }
+    console.log(deck);
 })
 
 var standButton = document.querySelector('#stand-button')
@@ -432,17 +437,17 @@ standButton.addEventListener('click', function(){
         dealerArray.push(deal())
         var pic = document.createElement('img');
         pic.src = dealerArray[dealerArray.length-1].img 
-        pic.setAttribute('class', 'height75 cardIMG')
+        pic.setAttribute('class', 'height50 cardIMG');
         dealerHand.appendChild(pic);
         dealerPoint.textContent = calcPoints(dealerArray).toString()
     }
     //POSSIBILITIES OF LOSING AND WINNING AND A TIE
     //when dealer has higher but not busted
-    if(calcPoints(dealerArray) > calcPoints(playerArray) && calcPoints(dealerArray) <= 21){
+    if((calcPoints(dealerArray) > calcPoints(playerArray)) && calcPoints(dealerArray) <= 21){
         lose();
         lossCount.textContent = losses.toString();
     //when player is higher but not busted
-    } else if(calcPoints(dealerArray) < calcPoints(playerArray) && calcPoints(dealerArray) <= 21) {
+    } else if((calcPoints(dealerArray) < calcPoints(playerArray)) && calcPoints(dealerArray) <= 21) {
         win();
         winCount.textContent = wins.toString();
     //when dealer busted
@@ -450,11 +455,11 @@ standButton.addEventListener('click', function(){
         win();
         winCount.textContent = wins.toString();
     //when tied but dealer has less cards
-    } else if(calcPoints(dealerArray) == calcPoints(playerArray) && dealerArray.length < playerArray.length){
+    } else if((calcPoints(dealerArray) == calcPoints(playerArray)) && (dealerArray.length < playerArray.length)){
         lose();
         lossCount.textContent = losses.toString();
     //when tied but player has less cards
-    } else if(calcPoints(dealerArray) == calcPoints(playerArray) && dealerArray.length > playerArray.length){
+    } else if((calcPoints(dealerArray) == calcPoints(playerArray)) && (dealerArray.length > playerArray.length)){
         win();
         winCount.textContent = wins.toString()
     //when tied everything
@@ -465,15 +470,22 @@ standButton.addEventListener('click', function(){
 })
 
 replayButton.addEventListener('click', function(){
-    while (dealerArray.length != 0){//DEALS THE FIRST TWO CARDS FOR EACH PLAYER
+    document.getElementById('dealer-hand').innerHTML = "";
+    document.getElementById('player-hand').innerHTML = "";
+    document.getElementById('player-points').innerHTML = "";
+    document.getElementById('dealer-points').innerHTML = "";
+    document.getElementById('messages').innerHTML = "";
+    while (dealerArray.length != 0){//PUTS THE CARDS BACK IN THE DECK
         deck.push(dealerArray.pop())
     }
     while(playerArray.length != 0){
         deck.push(playerArray.pop())
     }
     shuffleArray(deck);
+    sum = 0;
     document.getElementById('deal-button').disabled = false;
     document.getElementById('hit-button').disabled = true;
     document.getElementById('stand-button').disabled = true;
 
 })
+
