@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <form onsubmit="" action="classJquery1.html" method="GET">
+
+        <fieldset> 
+            <legend>Personal Information</legend>
+            <input type="text" name= "" placeholder="Name" required >
+            <input type="radio" name="isActive">
+            <input type="checkbox" name="isPresent">
+            <input type="password" name="password" placeholder="Password">
+            <input type="text" name="city" placeholder="city" required minlength="4" maxlength="8">
+            <input id="email" type="email" name="email" placeholder="email" required>
+        </fieldset>
+        <button type="submit">Submit</button>
+        
+
+    </form>
+
+
+    <script
+    src="http://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+
+    <script>
+    
+        $(function(){
+
+            $('form').submit((e)=>{
+                e.preventDefault();
+                alert('form submitted')
+
+                let $name = $('#name').val();
+                let $city = $('#city').val();
+                let $email = $('#email').val();
+                let $active = $('#active').is(':checked');
+                console.log(`
+                    ${$name},
+                    ${$city},
+                    ${$email},
+                    ${$active}
+                `)
+
+            })
+
+
+        })
+    
+    </script>
+
+
+    <!-- <script>
+    
+        let myFunction = () => {
+
+        }    
+
+        let email = document.getElementById('email');
+        email.addEventListener('input', (e) =>{
+            if(email.validity.typeMismatch){
+                email.setCustomValidity("Unexpected email")
+            } else {
+                email.setCustomValidity('');
+            }
+        })
+    
+    </script> -->
+</body>
+</html>
