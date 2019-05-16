@@ -16,7 +16,16 @@
         #mainStyle{
             background-color:powderblue;
         }
-    
+        
+        .myAnchor {
+            color: red;
+            font-size: 14px;
+        }
+
+        .active{
+            background-color: yellow;
+
+        }
     </style>
 </head>
 <body>
@@ -25,7 +34,7 @@
     <header>
         <h1>Digital Crafts</h1>
         <h2>Coding Camp</h2>
-        <img width='200px' src="https://assets3.thrillist.com/v1/image/2788029/size/gn-gift_guide_variable_c.jpg" id="puppies" alt="">
+        <img width='200px' src="https://assets3.thrillist.com/v1/image/2788029/size/gn-gift_guide_variable_c.jpg" class="myAnchor" alt="">
         <p data-anthony="hello">content content content content content content content content content content content content content content content content content content content content </p>
     </header>
 
@@ -34,6 +43,15 @@
                 content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content 
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium nesciunt obcaecati, quos consequatur distinctio debitis laboriosam aut. Veniam iusto ratione dolore, magnam eius voluptates vero minima numquam dicta laborum asperiores? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolor illo reiciendis excepturi quisquam qui laudantium, aspernatur fugiat quod ipsum amet. Id reiciendis eveniet amet tempora velit, inventore deserunt repudiandae!
         </p>
+
+        <button id="the-button">Hide</button>
+        <button id="the-button1">Show</button>
+        <button id="the-button2">fade</button>
+        <button id="the-button3">Slide</button>
+        <a href="" class="myAnchor">myanchor</a>
+    
+
+        <textarea name="" id="" cols="30" rows="10"></textarea>
     </main>
     
     <script
@@ -55,6 +73,65 @@
             let $jumanji = $('#mainStyle')
             $jumanji.html('jajaja')//JQuery way of changing content
 
+            //CREATING A NEW ELEMENT
+            $dwayne = $('<a>', {
+                'class': 'myAnchor',
+                'text' : 'This is my anchor',
+                'target': '_blank',
+                'href': 'https://www.yahoo.com'
+            });
+
+            $jumanji.append($dwayne);
+
+            //ADDING CLASS
+            $dwayne.addClass('active');
+            // $('#the-button').click((e) => { //click is the same as an addEventListener
+            //     alert('hello')
+            // })
+
+            // //USING .ON
+            // $('#the-button').on('click', function(event){
+            //     alert('hello Kevin Hart')
+            // })
+
+            //EFFECTS HIDE THE TEXT AREA
+            $('#the-button').on('click', (e)=>{
+                $('textarea').hide();
+            })
+
+            //EFFECTS SHOW THE TEXT AREA
+            $('#the-button1').on('click', (e)=>{
+                $('textarea').show();
+            })
+
+            //EFFECTS FADEOUT
+            $('#the-button2').on('click', (e)=>{
+                $('h1').fadeOut();
+            })
+
+            //EFFECTS SLIDE
+            $('#the-button3').click((e)=>{
+                $('img').slideUp();
+            })
+
+
+
+            //.ON WITH A FILTERING SELECTOR
+            $('.myAnchor').on('click', 'a', (e) => {
+                alert('digital crafts')
+                e.preventDefault();
+            })
+
+            //KEYUP AND KEYDOWN
+            $('textarea').keydown((e)=>{
+                console.log(`Key Down: ${e.keyCode}`)
+            });
+
+            $('textarea').keyup((e)=>{
+                console.log(`Key Up: ${e.keyCode}`)
+            });
+
+
             //this is the shorter way of doing it. The "$" itself is using a Jquery function
             // document.getElementById('puppies');
             // document.querySelector('#puppies');
@@ -66,11 +143,11 @@
             // $('.mainStyle') //JQuery use of getting a class
             // $('p') //JQuery use of getting all tags
 
-            let $result = $('p');
-            console.log($result);
+            // let $result = $('p');
+            // console.log($result);
 
-            let $a = $('[data-anthony]')
-            console.log($a)
+            // let $a = $('[data-anthony]')
+            // console.log($a)
 
         })
     
