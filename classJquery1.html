@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        header {
+            background-color: pink;
+            height: 300px;
+            width: 100%;
+        }
+
+        #mainStyle{
+            background-color:powderblue;
+        }
+    
+    </style>
+</head>
+<body>
+    
+    
+    <header>
+        <h1>Digital Crafts</h1>
+        <h2>Coding Camp</h2>
+        <img width='200px' src="https://assets3.thrillist.com/v1/image/2788029/size/gn-gift_guide_variable_c.jpg" id="puppies" alt="">
+        <p data-anthony="hello">content content content content content content content content content content content content content content content content content content content content </p>
+    </header>
+
+    <main>
+        <p id="mainStyle">
+                content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content 
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium nesciunt obcaecati, quos consequatur distinctio debitis laboriosam aut. Veniam iusto ratione dolore, magnam eius voluptates vero minima numquam dicta laborum asperiores? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolor illo reiciendis excepturi quisquam qui laudantium, aspernatur fugiat quod ipsum amet. Id reiciendis eveniet amet tempora velit, inventore deserunt repudiandae!
+        </p>
+    </main>
+    
+    <script
+    src="http://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script>
+        // $(document).ready(function () { 
+        //     //this is how you load Jquery library and where you put your Jquery code
+            
+        // })
+
+        $(function(){
+
+            // let p = document.getElementById('#mainStyle');//Javascript way of changing content 
+            // p.innerHTML('jajajaja');
+
+
+            let $jumanji = $('#mainStyle')
+            $jumanji.html('jajaja')//JQuery way of changing content
+
+            //this is the shorter way of doing it. The "$" itself is using a Jquery function
+            // document.getElementById('puppies');
+            // document.querySelector('#puppies');
+            // document.querySelectorAll('.mainStyle'); //you'd get back an array
+            // document.getElementsByTagName('p'); 
+            // document.querySelectorAll('p');
+
+            // $('#puppies') //jquery use of getting IDs
+            // $('.mainStyle') //JQuery use of getting a class
+            // $('p') //JQuery use of getting all tags
+
+            let $result = $('p');
+            console.log($result);
+
+            let $a = $('[data-anthony]')
+            console.log($a)
+
+        })
+    
+    </script>
+</body>
+</html>

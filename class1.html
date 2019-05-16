@@ -9,14 +9,46 @@
 <body>
     
 
+    <p id="demo"></p>
+
+    <h1></h1>
+    <p></p>
+
+
     <script>
-    
-        let type = "school";
-        function getType(var){
-            console.log(`This is: ${this.type}`)
+
+        let people = [];
+        let html = "";
+
+        let person = {
+            fName: "Chase",
+            lName: "Brumfield",
+            city: "New Orleans"
         }
-    
-        console.log(getType(type));
+
+        let person1 = {
+            fName: "Alfie",
+            lName: "Santos",
+            city: "Houston"
+        }
+
+        people.push(person);
+        people.push(person1);
+        console.log(people);
+
+        let myHTML = (p) => {
+            return `
+            <h1>${p.fName} ${p.lName}</h1>
+            <p>${p.city}</p>
+            `
+        }
+
+        people.forEach(p => {
+            html += myHTML(p)
+        })
+
+        document.getElementById('demo').innerHTML = html 
+
     </script>
 </body>
 </html>

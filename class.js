@@ -336,11 +336,12 @@
 // }
 // console.log(vowelCount);
 
-var a = 'first';
-var b = 'second';
+// var a = 'first';
+// var b = 'second';
 
-console.log(a, b);
-//to reverse this in ES6
+// console.log(a, b);
+// //to reverse this in ES6
 
-[b, a] = [a, b]
-console.log(a, b);
+// [b, a] = [a, b]
+// console.log(a, b);
+
